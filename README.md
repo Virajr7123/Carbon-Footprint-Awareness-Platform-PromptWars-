@@ -22,12 +22,12 @@ Since this is a lightweight, frontend-only project, there is no complex installa
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/terramo.git](https://github.com/your-username/terramo.git)
+   git clone https://github.com/Virajr7123/Carbon-Footprint-Awareness-Platform-PromptWars-.git
    ```
 
 2. Navigate into the project folder:
    ```bash
-   cd terramo
+   cd Carbon-Footprint-Awareness-Platform-PromptWars
    ```
 
 3. Open the `index.html` file directly in any web browser to view the application.
