@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terramo — Know Your Carbon. Own Your Impact.</title>
+  <meta name="description" content="Terramo helps you understand, track, and reduce your personal carbon footprint through smart insights, daily actions, and community challenges." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo" id="logo-link">
+        <span class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="#4E9136" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="5" fill="#4E9136" opacity="0.9"/>
+            <line x1="14" y1="2" x2="14" y2="9" stroke="#4E9136" stroke-width="1"/>
+            <line x1="14" y1="19" x2="14" y2="26" stroke="#4E9136" stroke-width="1"/>
+            <line x1="2" y1="8" x2="8.5" y2="11.5" stroke="#4E9136" stroke-width="1"/>
+            <line x1="19.5" y1="16.5" x2="26" y2="20" stroke="#4E9136" stroke-width="1"/>
+            <line x1="26" y1="8" x2="19.5" y2="11.5" stroke="#4E9136" stroke-width="1"/>
+            <line x1="8.5" y1="16.5" x2="2" y2="20" stroke="#4E9136" stroke-width="1"/>
+          </svg>
+        </span>
+        Terramo
+      </a>
+      <div class="nav-links">
+        <a href="#calculator" class="nav-link">Calculator</a>
+        <a href="#dashboard" class="nav-link">Dashboard</a>
+        <a href="#actions" class="nav-link">Actions</a>
+        <a href="#compare" class="nav-link">Compare</a>
+      </div>
+      <button class="btn-nav-cta" id="nav-cta" onclick="scrollToSection('calculator')">Start Tracking</button>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#calculator" onclick="closeMobileMenu()">Calculator</a>
+      <a href="#dashboard" onclick="closeMobileMenu()">Dashboard</a>
+      <a href="#actions" onclick="closeMobileMenu()">Actions</a>
+      <a href="#compare" onclick="closeMobileMenu()">Compare</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-grain"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <canvas id="particle-canvas"></canvas>
+
+      <!-- Cinematic video background (hero only) -->
+      <div class="hero-video-wrap">
+        <video
+          id="hero-video"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"
+          muted
+          playsinline
+          preload="auto"
+          class="hero-video-el"
+        ></video>
+        <!-- Gradient: blends video into dark bg top & bottom -->
+        <div class="hero-video-grad-top"></div>
+        <div class="hero-video-grad-bottom"></div>
+        <div class="hero-video-grad-sides"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Live Global CO₂: <strong id="live-co2">423.4 ppm</strong>
+        <span class="badge-trend">▲ 2.4 ppm / yr</span>
+      </div>
+      <h1 class="hero-title">
+        Know Your Carbon.<br />
+        <span class="hero-title-accent">Own Your Impact.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Terramo gives you a forensic view of your personal carbon footprint — 
+        calculated from your actual lifestyle, mapped to global benchmarks, 
+        and paired with actions that actually make a difference.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollToSection('calculator')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Calculate My Footprint
+        </button>
+        <button class="btn-ghost" onclick="scrollToSection('dashboard')">
+          See a Sample Report →
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="4.8">0</span><span>T</span>
+          <span class="hero-stat-label">Avg. person CO₂/yr</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="2.0">0</span><span>T</span>
+          <span class="hero-stat-label">Paris target by 2050</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="37">0</span><span>B</span>
+          <span class="hero-stat-label">Tonnes CO₂ this year</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION -->
+  <section id="calculator">
+    <div class="section-header">
+      <div class="section-tag">Step 01</div>
+      <h2 class="section-title">Calculate Your Footprint</h2>
+      <p class="section-sub">Answer a few questions about your lifestyle. We'll build your personal carbon profile in real time.</p>
+    </div>
+
+    <div class="calc-container">
+      <div class="calc-left">
+      <div class="calc-tabs" id="calc-tabs">
+        <button class="calc-tab active" data-tab="transport" onclick="switchTab('transport')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v3h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Transport
+        </button>
+        <button class="calc-tab" data-tab="home" onclick="switchTab('home')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Home
+        </button>
+        <button class="calc-tab" data-tab="diet" onclick="switchTab('diet')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Diet
+        </button>
+        <button class="calc-tab" data-tab="shopping" onclick="switchTab('shopping')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Shopping
+        </button>
+        <div class="calc-tab-indicator" id="calc-indicator"></div>
+      </div>
+
+      <div class="calc-panels">
+        <!-- TRANSPORT -->
+        <div class="calc-panel active" id="panel-transport">
+          <div class="calc-questions">
+            <div class="question-group">
+              <label class="q-label">Do you own a car?</label>
+              <div class="toggle-group" id="owns-car-toggle">
+                <button class="toggle-btn active" data-val="yes" onclick="setToggle('owns-car-toggle', 'yes')">Yes</button>
+                <button class="toggle-btn" data-val="no" onclick="setToggle('owns-car-toggle', 'no')">No</button>
+              </div>
+            </div>
+            <div class="question-group" id="car-details">
+              <label class="q-label">What type of car?</label>
+              <div class="card-select" id="car-type-select">
+                <button class="card-opt active" data-val="petrol" onclick="setCardOpt('car-type-select', 'petrol')">
+                  <span class="opt-icon">⛽</span><span>Petrol / Diesel</span>
+                </button>
+                <button class="card-opt" data-val="hybrid" onclick="setCardOpt('car-type-select', 'hybrid')">
+                  <span class="opt-icon">⚡</span><span>Hybrid</span>
+                </button>
+                <button class="card-opt" data-val="ev" onclick="setCardOpt('car-type-select', 'ev')">
+                  <span class="opt-icon">🔋</span><span>Electric</span>
+                </button>
+              </div>
+            </div>
+            <div class="question-group" id="car-km-group">
+              <label class="q-label">Weekly driving distance: <span class="q-value" id="car-km-val">200 km</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="car-km" class="custom-slider" min="0" max="1000" value="200" oninput="updateSlider('car-km', 'car-km-val', ' km')" />
+                <div class="slider-track-fill" id="car-km-fill"></div>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Flights per year</label>
+              <div class="flight-counter">
+                <div class="flight-type">
+                  <span class="flight-label">Short-haul (&lt;3h)</span>
+                  <div class="counter">
+                    <button class="counter-btn" onclick="adjustCounter('short-flights', -1)">−</button>
+                    <span class="counter-val" id="short-flights">2</span>
+                    <button class="counter-btn" onclick="adjustCounter('short-flights', 1)">+</button>
+                  </div>
+                </div>
+                <div class="flight-type">
+                  <span class="flight-label">Long-haul (&gt;3h)</span>
+                  <div class="counter">
+                    <button class="counter-btn" onclick="adjustCounter('long-flights', -1)">−</button>
+                    <span class="counter-val" id="long-flights">1</span>
+                    <button class="counter-btn" onclick="adjustCounter('long-flights', 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Primary public transport use</label>
+              <div class="card-select" id="transit-select">
+                <button class="card-opt active" data-val="rarely" onclick="setCardOpt('transit-select','rarely')"><span>Rarely</span></button>
+                <button class="card-opt" data-val="sometimes" onclick="setCardOpt('transit-select','sometimes')"><span>Sometimes</span></button>
+                <button class="card-opt" data-val="often" onclick="setCardOpt('transit-select','often')"><span>Often</span></button>
+                <button class="card-opt" data-val="always" onclick="setCardOpt('transit-select','always')"><span>Always</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOME -->
+        <div class="calc-panel" id="panel-home">
+          <div class="calc-questions">
+            <div class="question-group">
+              <label class="q-label">Home type</label>
+              <div class="card-select" id="home-type-select">
+                <button class="card-opt active" data-val="apartment" onclick="setCardOpt('home-type-select','apartment')"><span class="opt-icon">🏢</span><span>Apartment</span></button>
+                <button class="card-opt" data-val="semi" onclick="setCardOpt('home-type-select','semi')"><span class="opt-icon">🏘️</span><span>Semi-detached</span></button>
+                <button class="card-opt" data-val="detached" onclick="setCardOpt('home-type-select','detached')"><span class="opt-icon">🏡</span><span>Detached House</span></button>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Number of people in household: <span class="q-value" id="household-val">3</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="household" class="custom-slider" min="1" max="8" value="3" oninput="updateSlider('household', 'household-val', '')" />
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Primary heating source</label>
+              <div class="card-select" id="heating-select">
+                <button class="card-opt active" data-val="gas" onclick="setCardOpt('heating-select','gas')"><span class="opt-icon">🔥</span><span>Natural Gas</span></button>
+                <button class="card-opt" data-val="electric" onclick="setCardOpt('heating-select','electric')"><span class="opt-icon">⚡</span><span>Electric</span></button>
+                <button class="card-opt" data-val="heat-pump" onclick="setCardOpt('heating-select','heat-pump')"><span class="opt-icon">♻️</span><span>Heat Pump</span></button>
+                <button class="card-opt" data-val="oil" onclick="setCardOpt('heating-select','oil')"><span class="opt-icon">🛢️</span><span>Oil / Coal</span></button>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Monthly electricity bill: <span class="q-value" id="elec-val">$120</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="elec-bill" class="custom-slider" min="20" max="500" value="120" oninput="updateSlider('elec-bill', 'elec-val', '', '$')" />
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Do you use renewable energy?</label>
+              <div class="toggle-group" id="renewable-toggle">
+                <button class="toggle-btn" data-val="yes" onclick="setToggle('renewable-toggle', 'yes')">Yes</button>
+                <button class="toggle-btn active" data-val="no" onclick="setToggle('renewable-toggle', 'no')">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIET -->
+        <div class="calc-panel" id="panel-diet">
+          <div class="calc-questions">
+            <div class="question-group">
+              <label class="q-label">Diet type</label>
+              <div class="card-select diet-grid" id="diet-select">
+                <button class="card-opt" data-val="vegan" onclick="setCardOpt('diet-select','vegan')"><span class="opt-icon">🌱</span><span>Vegan</span></button>
+                <button class="card-opt" data-val="vegetarian" onclick="setCardOpt('diet-select','vegetarian')"><span class="opt-icon">🥗</span><span>Vegetarian</span></button>
+                <button class="card-opt active" data-val="flexitarian" onclick="setCardOpt('diet-select','flexitarian')"><span class="opt-icon">🐟</span><span>Flexitarian</span></button>
+                <button class="card-opt" data-val="omnivore" onclick="setCardOpt('diet-select','omnivore')"><span class="opt-icon">🥩</span><span>Omnivore</span></button>
+                <button class="card-opt" data-val="heavy-meat" onclick="setCardOpt('diet-select','heavy-meat')"><span class="opt-icon">🍖</span><span>Heavy Meat</span></button>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">How often do you eat locally-sourced food?</label>
+              <div class="card-select" id="local-food-select">
+                <button class="card-opt active" data-val="rarely" onclick="setCardOpt('local-food-select','rarely')"><span>Rarely</span></button>
+                <button class="card-opt" data-val="sometimes" onclick="setCardOpt('local-food-select','sometimes')"><span>Sometimes</span></button>
+                <button class="card-opt" data-val="often" onclick="setCardOpt('local-food-select','often')"><span>Often</span></button>
+                <button class="card-opt" data-val="always" onclick="setCardOpt('local-food-select','always')"><span>Always</span></button>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Food waste per week: <span class="q-value" id="food-waste-val">Medium</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="food-waste" class="custom-slider" min="0" max="3" value="1" step="1" oninput="updateFoodWaste(this.value)" />
+              </div>
+              <div class="slider-labels">
+                <span>None</span><span>Low</span><span>Medium</span><span>High</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHOPPING -->
+        <div class="calc-panel" id="panel-shopping">
+          <div class="calc-questions">
+            <div class="question-group">
+              <label class="q-label">Monthly clothing/fashion spend: <span class="q-value" id="fashion-val">$80</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="fashion-spend" class="custom-slider" min="0" max="500" value="80" oninput="updateSlider('fashion-spend', 'fashion-val', '', '$')" />
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Do you buy second-hand / recycled clothing?</label>
+              <div class="toggle-group" id="secondhand-toggle">
+                <button class="toggle-btn" data-val="yes" onclick="setToggle('secondhand-toggle', 'yes')">Yes</button>
+                <button class="toggle-btn active" data-val="no" onclick="setToggle('secondhand-toggle', 'no')">No</button>
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">New electronics per year: <span class="q-value" id="electronics-val">2</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="electronics" class="custom-slider" min="0" max="10" value="2" oninput="updateSlider('electronics', 'electronics-val', '')" />
+              </div>
+            </div>
+            <div class="question-group">
+              <label class="q-label">Online shopping packages per month: <span class="q-value" id="packages-val">5</span></label>
+              <div class="slider-wrap">
+                <input type="range" id="packages" class="custom-slider" min="0" max="30" value="5" oninput="updateSlider('packages', 'packages-val', '')" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div><!-- /.calc-left -->
+
+      <!-- LIVE RESULT PANEL -->
+      <div class="calc-result-panel" id="calc-result">
+        <div class="result-header">
+          <div class="result-label">Your Carbon Footprint</div>
+          <div class="result-unit">tonnes CO₂e / year</div>
+        </div>
+        <div class="result-number-wrap">
+          <div class="result-number" id="result-number">4.8</div>
+          <div class="result-gauge-wrap">
+            <svg class="result-gauge" viewBox="0 0 200 110" width="200" height="110">
+              <defs>
+                <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#4E9136;stop-opacity:1" />
+                  <stop offset="50%" style="stop-color:#C8963E;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#C45878;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(78,145,54,0.12)" stroke-width="12" stroke-linecap="round"/>
+              <path id="gauge-arc" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGrad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="63"/>
+              <circle id="gauge-needle" cx="100" cy="100" r="6" fill="#fff"/>
+              <line id="gauge-needle-line" x1="100" y1="100" x2="130" y2="60" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="result-breakdown">
+          <div class="breakdown-item">
+            <div class="bi-icon">🚗</div>
+            <div class="bi-label">Transport</div>
+            <div class="bi-bar"><div class="bi-fill transport-fill" id="bi-transport"></div></div>
+            <div class="bi-val" id="bi-transport-val">2.1</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="bi-icon">🏠</div>
+            <div class="bi-label">Home</div>
+            <div class="bi-bar"><div class="bi-fill home-fill" id="bi-home"></div></div>
+            <div class="bi-val" id="bi-home-val">1.4</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="bi-icon">🥗</div>
+            <div class="bi-label">Diet</div>
+            <div class="bi-bar"><div class="bi-fill diet-fill" id="bi-diet"></div></div>
+            <div class="bi-val" id="bi-diet-val">0.9</div>
+          </div>
+          <div class="breakdown-item">
+            <div class="bi-icon">🛍️</div>
+            <div class="bi-label">Shopping</div>
+            <div class="bi-bar"><div class="bi-fill shop-fill" id="bi-shop"></div></div>
+            <div class="bi-val" id="bi-shop-val">0.4</div>
+          </div>
+        </div>
+        <button class="btn-primary full-width" onclick="scrollToSection('dashboard')">
+          View My Full Report →
+        </button>
+      </div>
+    </div>
+  </section>
+
+<section id="dashboard">
+    <div class="section-header">
+      <div class="section-tag">Step 02</div>
+      <h2 class="section-title">Your Personal Report</h2>
+      <p class="section-sub">A detailed breakdown of where your emissions come from — and how you stack up.</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <!-- Score Card -->
+      <div class="dash-card score-card">
+        <div class="dash-card-label">Overall Score</div>
+        <div class="score-display">
+          <div class="score-circle-wrap">
+            <svg class="score-svg" viewBox="0 0 140 140" width="140" height="140">
+              <circle cx="70" cy="70" r="58" fill="none" stroke="rgba(78,145,54,0.1)" stroke-width="10"/>
+              <circle id="score-ring" cx="70" cy="70" r="58" fill="none" stroke="#4E9136" stroke-width="10"
+                stroke-dasharray="364" stroke-dashoffset="145" stroke-linecap="round"
+                transform="rotate(-90 70 70)"/>
+            </svg>
+            <div class="score-inner">
+              <div class="score-grade" id="score-grade">B+</div>
+              <div class="score-pct" id="score-pct">60%</div>
+            </div>
+          </div>
+          <div class="score-meta">
+            <div class="score-meta-item">
+              <span class="smi-label">Your footprint</span>
+              <span class="smi-val" id="smi-your">4.8T CO₂</span>
+            </div>
+            <div class="score-meta-item">
+              <span class="smi-label">Country avg.</span>
+              <span class="smi-val neutral">7.2T CO₂</span>
+            </div>
+            <div class="score-meta-item">
+              <span class="smi-label">Paris target</span>
+              <span class="smi-val good">2.0T CO₂</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radar / Category Card — col 2 row 1 -->
+      <div class="dash-card radar-card">
+        <div class="dash-card-label">Category Breakdown</div>
+        <canvas id="radar-canvas" width="280" height="220"></canvas>
+      </div>
+
+      <!-- Equivalencies — col 3 row 1 -->
+      <div class="dash-card equiv-card">
+        <div class="dash-card-label">What Your Footprint Equals</div>
+        <div class="equiv-grid">
+          <div class="equiv-item">
+            <div class="equiv-icon">✈️</div>
+            <div class="equiv-num" id="eq-flights">6</div>
+            <div class="equiv-desc">round-trip flights<br/>London → NYC</div>
+          </div>
+          <div class="equiv-item">
+            <div class="equiv-icon">🚗</div>
+            <div class="equiv-num" id="eq-km">18,400</div>
+            <div class="equiv-desc">km driven in<br/>a petrol car</div>
+          </div>
+          <div class="equiv-item">
+            <div class="equiv-icon">🌳</div>
+            <div class="equiv-num" id="eq-trees">240</div>
+            <div class="equiv-desc">trees needed to<br/>offset your CO₂</div>
+          </div>
+          <div class="equiv-item">
+            <div class="equiv-icon">💡</div>
+            <div class="equiv-num" id="eq-days">512</div>
+            <div class="equiv-desc">days of electricity<br/>for an average home</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Trend — spans full 3-column width -->
+      <div class="dash-card trend-card">
+        <div class="dash-card-label">Monthly Trend</div>
+        <div class="dash-card-sub">Your estimated CO₂ over the past 12 months</div>
+        <canvas id="trend-canvas" width="100%" height="180"></canvas>
+      </div>
+
+      <!-- Comparison Card — spans full 3-column width -->
+      <div class="dash-card compare-mini-card">
+        <div class="dash-card-label">Global Comparison</div>
+        <div class="compare-bars">
+          <div class="cmp-row">
+            <div class="cmp-country">🌍 World Avg</div>
+            <div class="cmp-bar-wrap"><div class="cmp-bar" style="width:53%;background:#6b7280;"><span>4.8T</span></div></div>
+          </div>
+          <div class="cmp-row highlight-row">
+            <div class="cmp-country">⭐ You</div>
+            <div class="cmp-bar-wrap"><div class="cmp-bar" id="cmp-you" style="width:53%;background:#7EC845;"><span id="cmp-you-val">4.8T</span></div></div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-country">🇺🇸 USA</div>
+            <div class="cmp-bar-wrap"><div class="cmp-bar" style="width:100%;background:#E8472A;"><span>16.0T</span></div></div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-country">🇪🇺 EU Avg</div>
+            <div class="cmp-bar-wrap"><div class="cmp-bar" style="width:44%;background:#F5C518;"><span>7.0T</span></div></div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-country">🇮🇳 India</div>
+            <div class="cmp-bar-wrap"><div class="cmp-bar" style="width:14%;background:#7EC845;"><span>1.9T</span></div></div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-country">🎯 Paris 2050</div>
+            <div class="cmp-bar-wrap"><div class="cmp-bar" style="width:12.5%;background:#4ade80;"><span>2.0T</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ACTIONS SECTION -->
+  <section id="actions">
+    <div class="section-header">
+      <div class="section-tag">Step 03</div>
+      <h2 class="section-title">Reduce Your Footprint</h2>
+      <p class="section-sub">Personalized actions ranked by impact. Check them off and watch your score drop.</p>
+    </div>
+
+    <div class="actions-filter">
+      <button class="filter-btn active" data-filter="all" onclick="filterActions('all')">All Actions</button>
+      <button class="filter-btn" data-filter="high" onclick="filterActions('high')">High Impact</button>
+      <button class="filter-btn" data-filter="transport" onclick="filterActions('transport')">Transport</button>
+      <button class="filter-btn" data-filter="home" onclick="filterActions('home')">Home</button>
+      <button class="filter-btn" data-filter="diet" onclick="filterActions('diet')">Diet</button>
+      <button class="filter-btn" data-filter="shopping" onclick="filterActions('shopping')">Shopping</button>
+    </div>
+
+    <div class="actions-grid" id="actions-grid">
+      <!-- Actions rendered by JS -->
+    </div>
+
+    <div class="savings-banner" id="savings-banner">
+      <div class="sb-icon">🎯</div>
+      <div class="sb-content">
+        <div class="sb-title">Your potential savings</div>
+        <div class="sb-sub">Complete all selected actions to reach:</div>
+      </div>
+      <div class="sb-numbers">
+        <div class="sb-num" id="sb-saved">0.0</div>
+        <div class="sb-unit">T CO₂ saved</div>
+      </div>
+      <div class="sb-arrow">→</div>
+      <div class="sb-numbers">
+        <div class="sb-num green" id="sb-new">4.8</div>
+        <div class="sb-unit">T new footprint</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE SECTION -->
+  <section id="compare">
+    <div class="section-header">
+      <div class="section-tag">Step 04</div>
+      <h2 class="section-title">Track & Challenge</h2>
+      <p class="section-sub">Monthly streaks, community benchmarks, and your progress over time.</p>
+    </div>
+
+    <div class="challenge-grid">
+      <!-- Streak Tracker -->
+      <div class="challenge-card streak-card">
+        <div class="cc-header">
+          <div class="cc-icon">🔥</div>
+          <div class="cc-title">Your Green Streak</div>
+        </div>
+        <div class="streak-display">
+          <div class="streak-num" id="streak-num">14</div>
+          <div class="streak-label">days of eco-actions</div>
+        </div>
+        <div class="streak-calendar" id="streak-calendar"></div>
+        <div class="streak-motivate" id="streak-motivate">Keep it up! 2 more days to beat your record.</div>
+      </div>
+
+      <!-- Community Leaderboard -->
+      <div class="challenge-card leaderboard-card">
+        <div class="cc-header">
+          <div class="cc-icon">🏆</div>
+          <div class="cc-title">Community Ranking</div>
+        </div>
+        <div class="leaderboard-list" id="leaderboard-list"></div>
+        <div class="leaderboard-you" id="leaderboard-you"></div>
+      </div>
+
+      <!-- Monthly Challenge -->
+      <div class="challenge-card monthly-card">
+        <div class="cc-header">
+          <div class="cc-icon">📅</div>
+          <div class="cc-title">June Challenge</div>
+        </div>
+        <div class="challenge-info">
+          <div class="challenge-name">🚴 No-Car Week</div>
+          <div class="challenge-desc">Go car-free for 7 consecutive days this month. Use public transport, cycling, or walking.</div>
+          <div class="challenge-progress-wrap">
+            <div class="challenge-progress-bar">
+              <div class="challenge-progress-fill" id="challenge-fill" style="width: 43%"></div>
+            </div>
+            <div class="challenge-progress-label">3 of 7 days complete</div>
+          </div>
+          <div class="challenge-reward">
+            <span class="cr-icon">🎖️</span>
+            <span>Reward: <strong>Urban Rider</strong> badge + 0.12T CO₂ offset</span>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="markChallengeDay()">Mark Today Complete</button>
+      </div>
+
+      <!-- Offset Options -->
+      <div class="challenge-card offset-card">
+        <div class="cc-header">
+          <div class="cc-icon">🌲</div>
+          <div class="cc-title">Offset Remaining CO₂</div>
+        </div>
+        <div class="offset-options">
+          <div class="offset-opt">
+            <div class="oo-left">
+              <div class="oo-icon">🌳</div>
+              <div class="oo-info">
+                <div class="oo-name">Plant Trees</div>
+                <div class="oo-desc">Verified reforestation in your region</div>
+              </div>
+            </div>
+            <div class="oo-right">
+              <div class="oo-cost">$2.50/T</div>
+              <button class="btn-offset" onclick="selectOffset('trees')">Select</button>
+            </div>
+          </div>
+          <div class="offset-opt">
+            <div class="oo-left">
+              <div class="oo-icon">☀️</div>
+              <div class="oo-info">
+                <div class="oo-name">Solar Projects</div>
+                <div class="oo-desc">Fund solar panels in developing nations</div>
+              </div>
+            </div>
+            <div class="oo-right">
+              <div class="oo-cost">$5.00/T</div>
+              <button class="btn-offset" onclick="selectOffset('solar')">Select</button>
+            </div>
+          </div>
+          <div class="offset-opt">
+            <div class="oo-left">
+              <div class="oo-icon">🌊</div>
+              <div class="oo-info">
+                <div class="oo-name">Ocean Kelp</div>
+                <div class="oo-desc">Blue carbon sequestration via kelp farms</div>
+              </div>
+            </div>
+            <div class="oo-right">
+              <div class="oo-cost">$8.00/T</div>
+              <button class="btn-offset" onclick="selectOffset('kelp')">Select</button>
+            </div>
+          </div>
+        </div>
+        <div class="offset-total" id="offset-total">
+          Select an option to see total cost for <strong id="offset-tonnes">4.8</strong>T
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="#7EC845" stroke-width="1.5"/>
+              <circle cx="14" cy="14" r="5" fill="#7EC845" opacity="0.9"/>
+            </svg>
+          </span>
+          Terramo
+        </div>
+        <p class="footer-tagline">Making carbon visible. Making action possible.</p>
+        <div class="footer-badges">
+          <span class="f-badge">🌱 Carbon Neutral</span>
+          <span class="f-badge">🔒 Privacy First</span>
+          <span class="f-badge">📡 Open Data</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="fl-col">
+          <div class="fl-title">Platform</div>
+          <a href="#">Calculator</a>
+          <a href="#">Dashboard</a>
+          <a href="#">Actions</a>
+          <a href="#">Challenges</a>
+        </div>
+        <div class="fl-col">
+          <div class="fl-title">Learn</div>
+          <a href="#">What is CO₂e?</a>
+          <a href="#">Paris Agreement</a>
+          <a href="#">Carbon Science</a>
+          <a href="#">Data Sources</a>
+        </div>
+        <div class="fl-col">
+          <div class="fl-title">About</div>
+          <a href="#">Our Mission</a>
+          <a href="#">Team</a>
+          <a href="#">Press</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Terramo. Data sourced from IEA, Our World in Data, EPA.</span>
+      <span>Built for a cooler planet.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
